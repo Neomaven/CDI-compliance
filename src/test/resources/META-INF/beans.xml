@@ -11,6 +11,12 @@
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ValuedMethodInterceptor2Class</class>
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInterceptor1Class</class>
         <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.ChainMethodInterceptor2Class</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor11</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor12</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor13</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor21</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor22</class>
+        <class>org.jboss.weld.compliance.impl.scenarios.interceptor.util.Interceptor23</class>
     </interceptors>
     <decorators>
         <class>org.jboss.weld.compliance.impl.scenarios.decorator.util.DecoratorClass</class>

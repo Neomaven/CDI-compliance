@@ -1,7 +1,6 @@
 package org.jboss.weld.compliance.impl.scenarios.interceptor.util;
 
 /**
- *
  * @author Matthieu Clochard
  */
 @ClassInterception

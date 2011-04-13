@@ -5,7 +5,6 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
 /**
- *
  * @author Matthieu Clochard
  */
 @Interceptor

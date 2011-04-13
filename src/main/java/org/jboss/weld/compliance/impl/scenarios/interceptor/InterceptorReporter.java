@@ -10,7 +10,6 @@ import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodIntercep
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ValuedMethodInterceptorTest;
 
 /**
- *
  * @author Matthieu Clochard
  */
 public final class InterceptorReporter extends AbstractScenarioReporter {

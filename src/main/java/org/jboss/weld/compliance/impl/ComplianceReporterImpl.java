@@ -7,6 +7,7 @@ import org.jboss.weld.compliance.api.ComplianceReporter;
 import org.jboss.weld.compliance.api.Scenario;
 import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorScenarioReporter;
 import org.jboss.weld.compliance.impl.scenarios.producer.ProducerReporter;
 
 /**
@@ -25,10 +26,12 @@ public class ComplianceReporterImpl implements ComplianceReporter {
     @Inject
     public ComplianceReporterImpl(ProducerReporter producerReporter,
             InterceptorReporter interceptorReporter,
+            InterceptorScenarioReporter interceptorScenarioReporter,
             DecoratorReporter decoratorReporter) {
         scenarios = new HashSet<Scenario>();
         scenarios.add(producerReporter);
         scenarios.add(interceptorReporter);
+        scenarios.add(interceptorScenarioReporter);
         scenarios.add(decoratorReporter);
     }
 

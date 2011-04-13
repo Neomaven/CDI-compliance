@@ -13,8 +13,12 @@ import org.jboss.weld.compliance.impl.scenarios.decorator.DecoratorReporter;
 import org.jboss.weld.compliance.impl.scenarios.decorator.tests.DecoratedTest;
 import org.jboss.weld.compliance.impl.scenarios.decorator.util.Decorated;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorReporter;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.InterceptorScenarioReporter;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ChainMethodInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptionTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ClassInterceptorTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.InitializationTest;
+import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptionTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.MethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.tests.ValuedMethodInterceptorTest;
 import org.jboss.weld.compliance.impl.scenarios.interceptor.util.ClassInterception;
@@ -47,6 +51,7 @@ import org.jboss.weld.compliance.impl.scenarios.producer.util.FieldProducedClass
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import toto.Interclass;
 
 /**
  *
@@ -71,6 +76,7 @@ public class WeldTest {
                 .addPackage(DecoratorReporter.class.getPackage())
                 .addPackage(DecoratedTest.class.getPackage())
                 .addPackage(Decorated.class.getPackage())
+                .addPackage(Interclass.class.getPackage())
                 .addResource("META-INF/beans.xml", "beans.xml");
 //                .addManifestResource(
 //						new UrlAsset( WeldTest.class.getResource( "/META-INF/beans.xml" ) ),
@@ -350,7 +356,7 @@ public class WeldTest {
      * INNER CLASS PRODUCER TEST
      * =========================================================================
      */
-    
+
     @Inject
     private InnerClassFieldProducerTest innerClassFieldProducerTest;
 
@@ -461,6 +467,48 @@ public class WeldTest {
 
     /*
      * =========================================================================
+     * OTHER INTERCEPTOR TEST
+     * =========================================================================
+     */
+
+    @Inject
+    private InitializationTest initializationTest;
+
+    @Test
+    public void initializationTest() {
+        try {
+            initializationTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private ClassInterceptionTest classInterceptionTest;
+
+    @Test
+    public void classInterceptionTest() {
+        try {
+            classInterceptionTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Inject
+    private MethodInterceptionTest methodInterceptionTest;
+
+    @Test
+    public void methodInterceptionTest() {
+        try {
+            methodInterceptionTest.run();
+        } catch (ComplianceException ex) {
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    /*
+     * =========================================================================
      * REPORT TEST
      * =========================================================================
      */
@@ -479,6 +527,22 @@ public class WeldTest {
 //    @Test
 //    public void interceptorReporter() {
 //        System.out.println(interceptorReporter.reportAll());
+//    }
+
+//    @Inject
+//    DecoratorReporter decoratorReporter;
+//
+//    @Test
+//    public void decoratorReporter() {
+//        System.out.println(decoratorReporter.reportAll());
+//    }
+
+//    @Inject
+//    InterceptorScenarioReporter interceptorScenarioReporter;
+//
+//    @Test
+//    public void interceptorScenarioReporter() {
+//        System.out.println(interceptorScenarioReporter.reportAll());
 //    }
 
     @Inject

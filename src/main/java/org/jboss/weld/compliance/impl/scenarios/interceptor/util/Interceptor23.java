@@ -5,18 +5,17 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
 /**
+ * Used by the InterceptorScenarioReporter.
  * @author Matthieu Clochard
  */
 @Interceptor
-@ValuedMethodInterception(false)
-public class ValuedMethodInterceptor2Class {
+@Interception(false)
+public class Interceptor23 {
 
     @AroundInvoke
     public Object intercept(InvocationContext ctx) throws Exception {
-        ValuedMethodInterceptedClass target = (ValuedMethodInterceptedClass) ctx.getTarget();
-        if (target.getName().equals("ValuedMethodInterceptedClassI1After")) {
-            target.setInterception2name("ValuedMethodInterceptor2Class");
-        }
+        InterceptedClass target = (InterceptedClass) ctx.getTarget();
+        target.addState(0x01000000);
         return ctx.proceed();
     }
 
